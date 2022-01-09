@@ -1,0 +1,32 @@
+#개발,운영 공통 설정
+application:
+   version: v1.0.0
+   title: test-dev
+
+spring:
+  profiles:
+    active: dev
+    
+  thymeleaf:
+    cache: false
+    mode: HTML  
+    
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group-id-oing
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+
+---
+#개발 환경
+spring:
+  profiles: dev
+server:
+  port: 8080
